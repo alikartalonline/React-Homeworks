@@ -24,7 +24,6 @@
 
 ###  Artık elimizde kullanıcı bilgileri ve bu kullanıcının post'ları var. Bu iki veriyi birleştirip <strong> return </strong> edin. Birleştirme sonucunda elinizde aşağıdaki gibi bir obje bulunması gerekiyor.
 
-<br>
 
 	```
 	{
