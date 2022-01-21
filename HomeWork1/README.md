@@ -62,7 +62,6 @@
 * #### Bir alt satırda bu fonksiyonu çalıştırın ve gelen sonucu log'layın.
 
 <br>
-<hr>
 
 ## <STRONG> The Result I Found:
 	
