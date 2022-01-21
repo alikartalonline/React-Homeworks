@@ -1,6 +1,6 @@
 # <strong> React Homework-1 : "getData"
 
-* ## Bu fonksiyon **"async"** olarak tanımlanmalı ve default olarak dışa aktarılmalıdır. 
+* ### Bu fonksiyon **"async"** olarak tanımlanmalı ve default olarak dışa aktarılmalıdır. 
 
 * ## Fonksiyonun içindeki asenkron fonksiyonlar **"await"** ile tanımlanmalıdır.
 * ##  Fonksiyon **Number** tipinde tek parametre alır. Bu parametre **user id**'yi belirtir.
