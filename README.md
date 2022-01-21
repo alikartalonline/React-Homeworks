@@ -1,7 +1,7 @@
 # React Homeworks
 
 ```
-## You can access my React assignments from the links below.
+You can access my React assignments from the links below.
 ```
 
 #### HomeWork 1 : ["getData"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork1)
