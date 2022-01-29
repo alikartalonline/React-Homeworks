@@ -1,11 +1,11 @@
 # <strong> React Homework-1 : "getData"
 
-* ### Bu fonksiyon **"async"** olarak tanımlanmalı ve default olarak dışa aktarılmalıdır. 
+* #### Bu fonksiyon **"async"** olarak tanımlanmalı ve default olarak dışa aktarılmalıdır. 
 
-* ### Fonksiyonun içindeki asenkron fonksiyonlar **"await"** ile tanımlanmalıdır.
-* ###  Fonksiyon **Number** tipinde tek parametre alır. Bu parametre **user id**'yi belirtir.
+* #### Fonksiyonun içindeki asenkron fonksiyonlar **"await"** ile tanımlanmalıdır.
+* ####  Fonksiyon **Number** tipinde tek parametre alır. Bu parametre **user id**'yi belirtir.
 
-###  Fonksiyonun görevi aşağıdaki endpoint'e giderek parametrede verilen user id ile ilgili kullanıcının verilerini çekmek olmalı. İstekleri **"axios"** kütüphanesini kullanarak yapmanız gerekiyor. İsteği yaparken aşağıdaki endpointin sonundaki rakamı parametrede gelen user id'ile değiştirmeniz gerekiyor.
+####  Fonksiyonun görevi aşağıdaki endpoint'e giderek parametrede verilen user id ile ilgili kullanıcının verilerini çekmek olmalı. İstekleri **"axios"** kütüphanesini kullanarak yapmanız gerekiyor. İsteği yaparken aşağıdaki endpointin sonundaki rakamı parametrede gelen user id'ile değiştirmeniz gerekiyor.
 
 
 ````
@@ -13,7 +13,7 @@
 ````
 
 
-### Yine aynı fonksiyonun içerisinde ve yine aynı user id için bir de "posts" isteği yapılmalıdır.İsteği yaparken aşağıdaki endpoint'in sonundaki rakamı parametrede gelen user id'ile değiştirmeniz gerekiyor.
+#### Yine aynı fonksiyonun içerisinde ve yine aynı user id için bir de "posts" isteği yapılmalıdır.İsteği yaparken aşağıdaki endpoint'in sonundaki rakamı parametrede gelen user id'ile değiştirmeniz gerekiyor.
 
 
 
@@ -22,7 +22,7 @@
 ````
 
 
-###  Artık elimizde kullanıcı bilgileri ve bu kullanıcının post'ları var. Bu iki veriyi birleştirip <strong> return </strong> edin. Birleştirme sonucunda elinizde aşağıdaki gibi bir obje bulunması gerekiyor.
+####  Artık elimizde kullanıcı bilgileri ve bu kullanıcının post'ları var. Bu iki veriyi birleştirip <strong> return </strong> edin. Birleştirme sonucunda elinizde aşağıdaki gibi bir obje bulunması gerekiyor.
 
 
 	```
@@ -57,13 +57,12 @@
 	}
 	```
 
-* ### "app.js" dosyasına yazmış olduğunuz "getData" isimli fonksiyonu "import" edin.
+* #### "app.js" dosyasına yazmış olduğunuz "getData" isimli fonksiyonu "import" edin.
 
-* ### Bir alt satırda bu fonksiyonu çalıştırın ve gelen sonucu log'layın.
+* #### Bir alt satırda bu fonksiyonu çalıştırın ve gelen sonucu log'layın.
 
-<br>
-<hr>
 <br>
 
 ## <STRONG> The Result I Found:
+	
 <img src="../HomeWork1/assets/1.png" alt="my work" width="1200" height="600">
