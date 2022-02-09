@@ -11,3 +11,4 @@
 ##### HTML / CSS / JAVASCRIPT / REACT 
 ![Todos App](https://i.hizliresim.com/o80uhkh.jpg)
   
+![Todos App](https://i.hizliresim.com/f0cbgl1.png)
