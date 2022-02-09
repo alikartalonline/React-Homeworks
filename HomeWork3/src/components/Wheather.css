@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.result{
+    display: flex;
+    min-height: 10vh;
+    width: 50%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2 );
+}
+
+.info{
+    width: 50%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+h2{
+    margin-left: 20px;
+}
+
+.sun{
+    width: 20%;
+    font-size: 1.0rem;
+    justify-content: end;
+    list-style-type:none; 
+    /* listenin yanındaki noktacıkları yoh ettim */
+}
+
+a:hover {
+    color: orange;
+  }
+
+a{
+      color:black
+  }
+
+  a:active {
+    color: yellow;
+  } 
+
+footer {
+    grid-column: col 1 / span 12;
+      grid-row: row 3;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+.logos{
+    justify-content: space-between;
+}
+
+.alikartal{
+    color:white;
+    text-decoration-line: underline;
+    text-decoration-color: rgb(242, 173, 0);  
+    text-decoration-style: double;
+    text-decoration-thickness: 5px; 
+    text-shadow: 1px 4px 25px  rgb(255, 225, 0);
+    background-color: 1px 4px 25px  rgb(255, 255, 255);
+    
+}
+
+
+
+
