@@ -20,7 +20,7 @@ You can access my React assignments from the links below.
 <br>
 <hr>
   
-#### HomeWork 3: ["weatherApp"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork3)
+#### HomeWork 3: ["Weather App"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork3)
 
 ##### <b> Weather App: 
 
