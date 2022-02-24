@@ -16,6 +16,8 @@ afterAll = Her şeyden sonra, yani en son bu arkadaş çalışıyor.
 AfterEach için Not: beforeEach'de eklediğimiz bir şeyi afterEach'de tekrar kaldırmak istediğimiz durumlarda kullanabiliriz.
 
 ```
+ 
+ <hr />
   
 ![Weather App](https://i.hizliresim.com/l92lin5.gif)
   
