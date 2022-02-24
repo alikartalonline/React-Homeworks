@@ -1,4 +1,4 @@
-## <b> React Text:
+## <b> React Test:
  
  #### React ile yapılmış ilk "test" projem
  
