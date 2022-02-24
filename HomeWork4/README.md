@@ -17,5 +17,5 @@ AfterEach için Not: beforeEach'de eklediğimiz bir şeyi afterEach'de tekrar ka
 
 ```
   
-![Weather App](https://i.hizliresim.com/medqrg2.gif)
+![Weather App](https://i.hizliresim.com/l92lin5.gif)
   
