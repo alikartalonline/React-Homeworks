@@ -1,0 +1,15 @@
+
+
+.App {
+  font-size: larger;
+  font-weight: 600;
+  padding-top: 250px;
+  text-align: center;
+  background-color: #a7b5ce;
+  height: 100vh;
+
+}
+
+.right{
+  margin: 10px;
+}
