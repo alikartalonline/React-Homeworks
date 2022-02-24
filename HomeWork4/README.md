@@ -1,10 +1,10 @@
 ## <b> React Test:
  
  #### React ile yapılmış ilk "test" projem
- 
- #### Çalıştırmak için: npm test
- 
+  
 ```
+npm test: Testi çalıştırmak için terminalde bu kodu kullanırız
+ 
 beforeAll = tüm testlerden önce, bir defaya mahsus çalışıyor ve sonra çalışmıyor.
 
 beforeEach = testlerden önce bu çalışır, sonra test çalışır ve her test için döngü bu şekilde devam eder.
