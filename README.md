@@ -16,3 +16,14 @@ You can access my React assignments from the links below.
 ##### <b> To Do List App: [Click to view](https://todos-alikartalonline.netlify.app/)
 
 ![getDAta](https://i.hizliresim.com/o80uhkh.jpg)
+
+<br>
+<hr>
+  
+#### HomeWork 3: ["Weather App"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork3)
+
+##### <b> Weather App: 
+
+![Weather App](https://i.hizliresim.com/medqrg2.gif)
+  
+  
