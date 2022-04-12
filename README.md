@@ -35,3 +35,11 @@ You can access my React assignments from the links below.
 
 ![React Test](https://i.hizliresim.com/l92lin5.gif)
   
+<br>
+<hr>
+  
+#### HomeWork 5: ["React Props and useState"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork5)
+
+##### <b> React Props and useState: 
+
+![React Test]()
