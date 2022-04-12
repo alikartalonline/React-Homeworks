@@ -8,4 +8,4 @@
   
  <br/>
  
- ![Todos App](https://i.hizliresim.com/f0cbgl1.png)
+ ![Weather App2](https://i.hizliresim.com/f0cbgl1.png)
