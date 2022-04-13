@@ -52,4 +52,13 @@ You can access my React assignments from the links below.
 ##### <b> React Api Work: 
 
 ![React Api Test](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork6/assets/1.png)
+  
+<br>
+<hr>
+  
+#### HomeWork 7: ["React Fake Rest Api"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork7)
+
+##### <b> React Fake Rest Api: 
+
+![React Fake Rest Api](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork7/assets/fakeapi.gif)
 
