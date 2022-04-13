@@ -1,0 +1,1 @@
+# smartPulse-Sample-Result-Table

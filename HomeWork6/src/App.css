@@ -1,0 +1,19 @@
+div{
+  margin: 5%;
+}
+
+.tr{
+  text-align: right;
+  font-weight: 400;
+  padding-right: 20px;
+}
+
+.titles{
+  background-color: rgb(84, 84, 218);
+  color: white;
+}
+
+h2 {
+  margin-left: 20%;
+}
+
