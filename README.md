@@ -43,3 +43,13 @@ You can access my React assignments from the links below.
 ##### <b> React Props and useState: 
 
 ![React Test](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork5/assets/state1.gif)
+
+<br>
+<hr>
+  
+#### HomeWork 6: [""](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork6)
+
+##### <b> React Api Work: 
+
+![React Api Test]()
+
