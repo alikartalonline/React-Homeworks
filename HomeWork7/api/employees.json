@@ -1,0 +1,66 @@
+{
+  "employees": [
+    {
+      "id": 2,
+      "first_name": "Liv",
+      "last_name": "MC Ilwrick",
+      "email": "lmcilwrickl@goo.gl",
+      "gender": "Female",
+      "roleId": 3
+    },
+    {
+      "id": 3,
+      "first_name": "Mark",
+      "last_name": "Parker",
+      "email": "mparker@ggos.ql",
+      "gender": "Male",
+      "roleId": 1
+    },
+    {
+      "id": 4,
+      "first_name": "Lily",
+      "last_name": "Jane",
+      "email": "patch@test.com",
+      "gender": "Female",
+      "roleId": 3
+    },
+    {
+      "id": 5,
+      "first_name": "Dean",
+      "last_name": "David",
+      "email": "dedad@gd.go",
+      "gender": "Male",
+      "roleId": 3
+    },
+    {
+      "first_name": "Ali",
+      "last_name": "Kartal",
+      "email": "test@test.com",
+      "gender": "Male",
+      "roleId": 1,
+      "id": 6
+    },
+    {
+      "first_name": "Ali",
+      "last_name": "Kartal",
+      "email": "test@test.com",
+      "gender": "Male",
+      "roleId": 1,
+      "id": 7
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "Manager"
+    },
+    {
+      "id": 2,
+      "name": "Engineer"
+    },
+    {
+      "id": 3,
+      "name": "Intern"
+    }
+  ]
+}
