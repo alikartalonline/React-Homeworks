@@ -1,0 +1,145 @@
+
+body{
+   background-color:Aquamarine;
+   
+}
+
+#container {
+    width: 400px;
+    background-color: LightSkyBlue;
+    padding: 20px;
+    border-style: dotted;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 10px 40px 0 rgba(0,0,0,0.50);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: none;
+    background-color: WhiteSmoke;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);    
+   
+    
+}
+
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+.list{
+    margin: 15px 0;
+    
+}
+
+.list > li{
+    background-color: Ivory;
+    padding: 10px;
+    margin-top: 3px;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+    border-style: double;
+    border-radius: 10px;
+    font-weight: 500;
+    
+}
+
+.btn{
+    display: flex;
+    float: right;
+    padding-top: 10px
+}
+
+.btn > button{
+    width: 70px;
+    height: 25px;
+}
+
+.total{
+    text-align: center;
+    padding-top: 30px;
+    text-shadow: 2px 2px 5px Aquamarine;
+
+}
+
+.head{
+    text-align: center;
+    text-shadow: 2px 2px 5px Aquamarine;
+
+}
+
+#inputs{
+    padding-top: 5px;
+}
+
+
+
+.butoncuk{
+    background-color: CornflowerBlue;
+    border: none;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px blue;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 20px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.butoncuk {
+    transition-duration: 0.4s;
+  }
+  
+  .butoncuk:hover {
+    background-color: DodgerBlue; 
+    color: white;
+  }
+
+  .butoncuk {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.50);
+  }
+
+  .butoncuk:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .butoncuk:active {
+    background-color: RoyalBlue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+.ref{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.p{
+    text-align: center;
+}
+
+.ref:active{
+    ackground-color: RoyalBlue;
+    transform: translateY(4px);
+    font-weight: 600;
+
+}
+
+.ref:hover {
+    transform: translateY(4px);
+    color: DodgerBlue;
+    font-weight: 600;
+
+  }
