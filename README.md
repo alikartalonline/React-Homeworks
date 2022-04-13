@@ -61,4 +61,13 @@ You can access my React assignments from the links below.
 ##### <b> React Fake Rest Api: 
 
 ![React Fake Rest Api](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork7/assets/fakeapi.gif)
+    
+<br>
+<hr>
+  
+#### HomeWork 7: ["React Contact App"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork8)
+
+##### <b> React Contact App: [Click to view](https://contacts-app-alikartalonline.netlify.app/)
+
+![React Contact App](https://i.hizliresim.com/evjmle8.png)
 
