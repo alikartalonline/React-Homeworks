@@ -1,6 +1,6 @@
 # React - FakeRestApi, Axios-Get-Post-Delete, ReactRouter, FormSerialize: 
 
-#### ["ClicktoView"](https://stickynote-alikartalonline.netlify.app/)
+<!-- #### ["ClicktoView"]() -->
 
 ```
 -BEFORE START:
@@ -15,7 +15,7 @@
 
 ```
 
-![ReactTestApi]()
+![ReactTestApi](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork9/assets/state2.gif)
 
 
 
