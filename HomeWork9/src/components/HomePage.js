@@ -38,7 +38,10 @@ function HomePage() {
         (movie) => {
             return movie.name.toLowerCase().indexOf(search.toLowerCase()) !== -1
         }
-    )
+    ).sort( (a,b) => {
+        return a.id < b.id ? 1 : a.id > b.id ? -1 : 0; 
+    }); // yeni eklenen filmin en önde gözükmesini istiyorum.
+
 
 
 
@@ -52,9 +55,6 @@ function HomePage() {
 
             <MovieList  movies={filteredMovies} deleteMovieProp={deleteMovie} />
 
-
-
-            {/* <AddMovie onAddMovieProp={(movie) => {addMovie(movie)}}/> */}
         </div>
     )
 }
