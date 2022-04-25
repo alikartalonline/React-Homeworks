@@ -1,0 +1,39 @@
+{
+  "movies": [
+    {
+      "id": 2,
+      "name": "The Dark Knight",
+      "rating": 8.5,
+      "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets.",
+      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+    },
+    {
+      "id": 3,
+      "name": "28 Days Later",
+      "rating": 7.2,
+      "overview": "Twenty-eight days after a killer virus was accidentally unleashed from a British research facility, a small group of London survivors are caught in a desperate struggle to protect themselves from the infected.",
+      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/w4SL5hv0qOanrN7GjwNgtjF1RtD.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Full Metal Jacket",
+      "rating": 8.1,
+      "overview": "A pragmatic U.S. Marine observes the dehumanizing effects the U.S.-Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.",
+      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/kMKyx1k8hWWscYFnPbnxxN4Eqo4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Terminator 2: Judgment Day",
+      "rating": 8.1,
+      "overview": "Nearly 10 years have passed since Sarah Connor was targeted for termination by a cyborg from the future. Now her son, John, the future leader of the resistance, is the target for a newer, more deadly terminator.",
+      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/weVXMD5QBGeQil4HEATZqAkXeEc.jpg"
+    },
+    {
+      "name": "Deneme Film",
+      "rating": "9.9",
+      "imageURL": "https://media1.giphy.com/media/3orieQ0mh5Mi5vSZZC/giphy.gif",
+      "overview": "this is a test :)",
+      "id": 6
+    }
+  ]
+}

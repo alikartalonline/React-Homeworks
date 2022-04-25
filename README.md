@@ -65,9 +65,17 @@ You can access my React assignments from the links below.
 <br>
 <hr>
   
-#### HomeWork 7: ["React Contact App"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork8)
+#### HomeWork 8: ["React Contact App"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork8)
 
 ##### <b> React Contact App: [Click to view](https://contacts-app-alikartalonline.netlify.app/)
 
 ![React Contact App](https://i.hizliresim.com/evjmle8.png)
 
+<br>
+<hr>
+  
+#### HomeWork 9: ["React FakeRestApi, Axios-Get-Post-Delete, ReactRouter"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork9)
+
+##### <b> React FakeRestApi, Axios-Get-Post-Delete, ReactRouter, FormSerialize: 
+
+![React Fake Rest Api]()
