@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
+import serialize from 'form-serialize';
 
 
-function EditMovie() {
+function EditMovie( { updateMovieProp } ) {
 
     const { id } = useParams()
     //    console.log(id)
@@ -24,9 +25,8 @@ function EditMovie() {
                 imageURL: res.data.imageURL
             }))
             .catch(e => console.log("error:", e))
+    }, []);
 
-
-    }, [])
 
     const navigate = useNavigate()
     //If you don't know useNavigate(), click the link below ;) 
@@ -34,10 +34,39 @@ function EditMovie() {
     // https://reactrouter.com/docs/en/v6/api
 
 
+    const onIpnutChange = (e) => {
+        // console.log("name:", e.target.name)
+        // console.log("value:", e.target.value)
+
+        setMovieInfo({
+            [e.target.name]: e.target.value
+        });
+    };
+
+
     const handleFormSubmit = (e) => {
         e.preventDefault()
         navigate("/")
-    }
+
+        // Edit => Yöntem-1: Fail
+        // const { name, rating, overview, imageURL } = movieInfo
+
+        // const updateMovie = {
+        //     // name: name, => ES6'da bunu aşağıdaki şekilde kısaltarak da yazabiliriz
+        //     // ( Nesnemizdeki isim-değer aynıysa yalnızca ismi bu şekilde yazabiliriz)
+        //     name,
+        //     rating,
+        //     overview,
+        //     imageURL
+        // }
+
+        // updateMovieProp(id, updateMovie)
+        
+
+        // Edit => Yöntem-2: From Serialize
+        const editMovieSerialize = serialize(e.target, { hash: true });
+        updateMovieProp(id, editMovieSerialize)
+    };
 
 
     return (
@@ -65,6 +94,7 @@ function EditMovie() {
                         className='form-control'
                         name='name'
                         value={movieInfo.name}
+                        onChange={onIpnutChange}
                     />
                 </div>
                 
@@ -75,6 +105,7 @@ function EditMovie() {
                         className='form-control'
                         name='rating'
                         value={movieInfo.rating}
+                        onChange={onIpnutChange}
                     />
                 </div>
 
@@ -86,6 +117,7 @@ function EditMovie() {
                         className='form-control'
                         name='imageURL'
                         value={movieInfo.imageURL}
+                        onChange={onIpnutChange}
                     />
                 </div>
 
@@ -97,6 +129,7 @@ function EditMovie() {
                         name="overview"
                         rows="5"
                         value={movieInfo.overview}
+                        onChange={onIpnutChange}
                     >
                     </textarea>
                 </div>
@@ -105,7 +138,7 @@ function EditMovie() {
                     <input
                         type="submit"
                         className='form-control btn btn-danger '
-                        value="Add Movie"
+                        value="Edit Movie"
                     />
                 </div>
 

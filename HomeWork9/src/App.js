@@ -32,7 +32,12 @@ const addMovie = async (movie) => {
 }
 
 
- 
+ // EDIT MOVIE
+const editMovie = async (id, updateMovie) => {
+  await axios.put(`http://localhost:3000/movies/${id}`, updateMovie)
+}
+
+
   return (
     <div>
 
@@ -43,7 +48,7 @@ const addMovie = async (movie) => {
     <Routes>  
           <Route path="/" element={ <HomePage />} />
           <Route path="/add" element={<AddMovie onAddMovieProp={(movie) => { addMovie(movie) }} />} />
-          <Route path="/edit/:id" element={ <EditMovie />} />
+          <Route path="/edit/:id"  element={ <EditMovie updateMovieProp={(id, movie) => { editMovie(id, movie) }}  />} />
     </Routes>
 
     </div>
