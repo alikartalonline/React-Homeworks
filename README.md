@@ -74,8 +74,8 @@ You can access my React assignments from the links below.
 <br>
 <hr>
   
-#### HomeWork 9: ["React FakeRestApi, Axios-Get-Post-Delete, ReactRouter"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork9)
+#### HomeWork 9: ["React FakeRestApi, Axios-Get-Post-Put-Delete, ReactRouter"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork9)
 
-##### <b> React FakeRestApi, Axios-Get-Post-Delete, ReactRouter, FormSerialize: 
+##### <b> React FakeRestApi, Axios-Get-Post-Put-Delete, ReactRouter, FormSerialize: 
 
-![React Fake Rest Api](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork9/assets/state2.gif)
+![React Fake Rest Api](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork9/assets/HomeWork9.gif)
