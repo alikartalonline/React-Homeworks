@@ -79,3 +79,19 @@ You can access my React assignments from the links below.
 ##### <b> React FakeRestApi, Axios-Get-Post-Put-Delete, ReactRouter, FormSerialize: 
 
 ![React Fake Rest Api](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork9/assets/HomeWork9.gif)
+
+<br>
+<hr>
+  
+#### HomeWork 10: ["React Redux - To Do List"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork10)
+
+<br>
+
+#### ToDoList - Redux : [Click to View](https://alikartalonline-todolistredux.netlify.app/)
+
+<br>
+
+![ToDoListRedux](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork10/assets/reduxtodolist.png)
+
+
+

@@ -20,4 +20,4 @@ npm install redux
 
 <br>
 
-![ToDoListRedux]()
+![ToDoListRedux](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork10/assets/reduxtodolist.png)
