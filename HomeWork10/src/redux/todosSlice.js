@@ -5,7 +5,7 @@ export const todosSlice = createSlice({
     initialState: {
         items: [{
             id: "1",
-            title: "Push My Self",
+            title: "Learn JavaScript",
             completed: true
         },
         {
