@@ -1,0 +1,165 @@
+body {
+  background-color: #373c46;
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.userDiv {
+  text-align: center;
+  color: #ffff;
+  margin-top: 5%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+
+.alikartalonline {
+  text-align: center;
+  color: #ffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  letter-spacing: 0.1em;
+  margin-top: 5px;
+  margin-bottom: 10%;
+}
+
+.alikartalonline a {
+  text-decoration: none;
+  color: orange;
+}
+
+.alikartalonline a:hover {
+  text-decoration: none;
+  color: red;
+  font-size: 20px;
+}
+
+.userDiv .x:hover {
+  /* background-color: rgb(152, 151, 151); */
+  background-color: rgb(150%, 150%, 15%, 10%);
+  font-weight: 600;
+  cursor: alias;
+}
+
+.main-box {
+  color: #ffff;
+  border: 1px solid orange;
+  border-radius: 1.2em;
+
+  width: 50%;
+  /* min-width: fit-content; */
+
+  min-height: 50vh;
+  max-height: fit-content;
+
+  background-color: #f0d298;
+  background-image: linear-gradient(19deg, #7f93be 0%, #b8b390 100%);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-box h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1.6em;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.task-div {
+  border-color: transparent;
+  border-bottom-color: red;
+  background-color: transparent;
+  color: white;
+}
+
+.task-div:hover {
+  background-color: transparent;
+  color: yellow;
+}
+
+.task-div:active {
+  background-color: transparent;
+  color: white;
+}
+
+.task-div:focus {
+  background-color: transparent;
+  color: white;
+}
+
+.add {
+  height: 55px;
+}
+
+li {
+  list-style: none;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  letter-spacing: 0.05em;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+li .x-icon {
+  display: none;
+  margin: auto 0;
+  font-size: 20px;
+  color: #b66060;
+  margin-top: -15px;
+  transition: color 0.2s ease-out;
+  cursor: pointer;
+}
+
+li .x-icon:hover {
+  color: red;
+  cursor: pointer;
+}
+
+li .x-icon:after {
+  cursor: pointer;
+  content: "×";
+}
+
+li:hover .x-icon {
+  display: block;
+  cursor: pointer;
+}
+
+footer {
+  color: #777;
+  padding: 10px 15px;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+  /* padding-top: 30%; */
+}
+
+footer .btn1:hover {
+  border-radius: 50%;
+}
+
+footer .btn2,
+.btn3 {
+  color: #ffff;
+}
+
+footer .btn2:hover {
+  color: orange;
+}
+
+footer .btn3:hover {
+  color: blue;
+}
+
+.wordalert {
+  height: 10px;
+  white-space: nowrap;
+  width: 70%;
+  opacity: 0.85;
+}
