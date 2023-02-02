@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import Homepage from './Homepage'
-import Alert from './Alert'
+import React, { useState } from 'react';
+import Homepage from './Homepage';
+import Alert from './Alert';
 
 
 
 function PersonelToDo() {
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("userKey")) || "")
-    const [form, setForm] = useState("")
-    const [alert, setAlert] = useState(null)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("userKey")) || "");
+    const [form, setForm] = useState("");
+    const [alert, setAlert] = useState(null);
 
 
     // FORM
@@ -16,7 +16,7 @@ function PersonelToDo() {
         e.preventDefault()
 
 
-        if (form == "" || form.length < 3) {
+        if (form === "" || form.length < 3) {
             setAlert("Alert")
             setTimeout(() => {
                 setAlert(null)
@@ -24,14 +24,14 @@ function PersonelToDo() {
             return false;
         }
 
-        setUser(form)
-        setForm("")
-        localStorage.setItem("userKey", JSON.stringify(form))
+        setUser(form);
+        setForm("");
+        localStorage.setItem("userKey", JSON.stringify(form));
     };
 
     // INPUT
     const onChangeInput = (e) => {
-        setForm([e.target.value].toString())
+        setForm([e.target.value].toString());
     };
 
 
@@ -39,7 +39,7 @@ function PersonelToDo() {
             <div className='container'>
                 <div className='row'>
                     {
-                        user == "" ?
+                        user === "" ?
                             <>
                                 {/* CREATE USER FORM CONTAINER START */}
                                 <div className={user === "" ? 'main-box container mt-5' : 'main-box container'}>
@@ -80,10 +80,9 @@ function PersonelToDo() {
                             </>
                             : <Homepage user={user} setUser={setUser} />
                     }
-
                 </div>
             </div>
-    )
+    );
 }
 
 export default PersonelToDo;

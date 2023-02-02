@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { toggle, deleteTodos } from '../redux/todos/todosSlice';
 
-function Section({ todos, setTodos, itemsRedux, filteredTodos }) {
+function Section({ filteredTodos }) {
 
     const disptach = useDispatch();
 
@@ -16,23 +16,14 @@ function Section({ todos, setTodos, itemsRedux, filteredTodos }) {
 
 
     // DELETE DATA FROM API
-    const deleteTodo = async (item) => {
-        // axios.delete(`https://630f37fc37925634188a39d5.mockapi.io/todos/${item}`)
-        const newTodo = todos.filter(
-            x => x.id !== item
-        );
-        setTodos(newTodo)
-    };
-
-    // UPDATE CHECKBOX AND COMPLETE TODO
-    // const updateCompleteTodos = (title) => {
-    //     const index = todos.findIndex(item => item.title === title);
-    //     const todo = todos.find(item => item.title === title);
-    //     todo.isCompleted = !todo.isCompleted
-    //     const newTodos = [...todos];
-    //     newTodos[index] = todo;
-    //     setTodos(newTodos);
+    // const deleteTodo = async (item) => {
+    //     axios.delete(`https://630f37fc37925634188a39d5.mockapi.io/todos/${item}`)
+    //     const newTodo = todos.filter(
+    //         x => x.id !== item
+    //     );
+    //     setTodos(newTodo)
     // };
+
 
     // useEffect(() => {
     //     setTimeout(() => {
@@ -49,7 +40,7 @@ function Section({ todos, setTodos, itemsRedux, filteredTodos }) {
 
                 {
                     // LOADING SPINNER BOOTSTRAP
-                    itemsRedux == "" ?
+                    filteredTodos === "" ?
 
                         <div className="spinner-border text-warning mt-5 ms-5" role="status">
                             <span className="visually-hidden">Loading...</span>
@@ -92,7 +83,7 @@ function Section({ todos, setTodos, itemsRedux, filteredTodos }) {
 
             </ul>
         </div>
-    )
+    );
 }
 
 export default Section;

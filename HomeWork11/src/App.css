@@ -140,21 +140,39 @@ footer {
   /* padding-top: 30%; */
 }
 
-footer .btn1:hover{
+/* footer .btn1:hover{
+  border-radius: 50%;
+} */
+
+.xbx:hover{
+  border-color: white;
   border-radius: 50%;
 }
 
-footer .btn2,
-.btn3 {
+footer .btn2, .btn3 {
   color: #ffff;
 }
 
 footer .btn2:hover {
   color: orange;
+  border-radius: 50%;
 }
 
 footer .btn3:hover {
-  color: blue;
+  color: rgb(45, 45, 247);
+    cursor: progress ;
+}
+
+footer .btn-sm:hover{
+  color: rgb(255, 247, 10);
+  border-color: yellow;
+  cursor: grab;
+}
+
+footer .btn-sm:active{
+  color: rgb(255, 247, 10);
+  border-color: yellow;
+  cursor: grabbing;
 }
 
 .wordalert {

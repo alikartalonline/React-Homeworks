@@ -43,5 +43,16 @@ export const todosSlice = createSlice({
     },
 });
 
-export const { newTodo, toggle, deleteTodos, changeActiveFilter, clearCompleted} = todosSlice.actions;
+export const selectTodos = (state) => state.todos.itemsRedux;
+
+export const selectFilteredTodos = (state) => {
+    if (state.todos.activeFilter === "All") {
+        return state.todos.itemsRedux;
+    }
+
+    return state.todos.itemsRedux.filter((x) => state.todos.activeFilter === "Active" ? x.isCompleted === false : x.isCompleted === true);
+}
+
+export const { newTodo, toggle, deleteTodos, changeActiveFilter, clearCompleted } = todosSlice.actions;
+
 export default todosSlice.reducer;

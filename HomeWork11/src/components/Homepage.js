@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { newTodo } from '../redux/todos/todosSlice';
 import { nanoid } from '@reduxjs/toolkit';
+import { selectFilteredTodos } from '../redux/todos/todosSlice';
 
 // COMPONENTS
 import Section from './Section';
@@ -17,16 +18,10 @@ import WordAlert from './WordAlert';
 function Homepage({ user, setUser }) {
 
     const disptach = useDispatch();
+    const filteredTodos = useSelector(selectFilteredTodos);
 
-    const itemsRedux = useSelector((state) => state.todos.itemsRedux);
-    const activeFilter = useSelector((state) => state.todos.activeFilter);
-    // console.log("active filter",activeFilter)
-
-    // const [todos, setTodos] = useState("");
     const [title, setTitle] = useState("");
     const [wordAlert, setWordAlert] = useState(null);
-
-    // const [selected, setSelected] = useState("All");
 
 
     // Api Axios Get
@@ -56,16 +51,10 @@ function Homepage({ user, setUser }) {
         }
 
         // addTodo(title) // title yani yazılan "todo" koşulu geçerse addTodo'ya gidecek.
-        // setTodos(todos.concat(title)) 
 
         disptach(newTodo({ id: nanoid(), title, isCompleted: false }));
         setTitle(""); // input boş kalması için
     }
-
-    // INPUT (Things To Do)
-    // const onChangeInput = (e) => {
-    //     setTitle({ [e.target.name]: e.target.value })
-    // }
 
     // ADD DATA TO API
     // const addTodo = async (item) => {
@@ -73,14 +62,6 @@ function Homepage({ user, setUser }) {
     //     setTodos(todos.concat([item]))
     // }
 
-    // SELECTED LIST FILTER
-    const filteredTodos =
-        activeFilter === "All" ? itemsRedux :
-            activeFilter === "Active" ? itemsRedux.filter(x => x.isCompleted === false) :
-                itemsRedux.filter(x => x.isCompleted === true)
-
-
-                // console.log("filterd itemsRedux",itemsRedux)
 
     // Reset User Button 
     const userDelete = () => {
@@ -100,7 +81,7 @@ function Homepage({ user, setUser }) {
                             Welcome
                             <div className='btn fs-5 x border-0 position-relative text-warning mb-2 '>"{user}"
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-                                    {itemsRedux.length}
+                                    {filteredTodos.length}
                                 </span>
                             </div>
                         </div>
@@ -124,7 +105,7 @@ function Homepage({ user, setUser }) {
                 <div className='main-box container-fluid' >
                     <div className='row'>
 
-                        <h1 className='col-12 text-warning mb-4'>Personal Todo App</h1>
+                        <h1 className='col-12 text-warning mb-4'>Personal Todo App - REDUX</h1>
 
                         <form className='row' onSubmit={handleSubmit}>
                             <div className='form-floating col-10' >
@@ -155,13 +136,8 @@ function Homepage({ user, setUser }) {
                         }
 
                         <Section 
-                        // todos={todos} setTodos={setTodos} 
-                        itemsRedux={itemsRedux} filteredTodos={filteredTodos}
-                         />
-                        <Footer 
-                        // todos={todos} 
-                        // activeFilter={activeFilter} 
-                        />
+                         filteredTodos={filteredTodos}  />
+                        <Footer />
                     </div>
 
                 </div>
@@ -188,7 +164,7 @@ function Homepage({ user, setUser }) {
 
             </div>
         </div>
-    )
-};
+    );
+}
 
 export default Homepage;
