@@ -4,10 +4,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { newTodo } from '../redux/todos/todosSlice';
 import { nanoid } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 
 // COMPONENTS
 import Section from './Section';
@@ -17,19 +16,18 @@ import WordAlert from './WordAlert';
 
 function Homepage({ user, setUser }) {
 
+    const disptach = useDispatch();
+
     const itemsRedux = useSelector((state) => state.todos.itemsRedux);
-    // console.log("item redux",itemsRedux.length)
+    const activeFilter = useSelector((state) => state.todos.activeFilter);
+    // console.log("active filter",activeFilter)
 
-    const [todos, setTodos] = useState("")
-
+    // const [todos, setTodos] = useState("");
     const [title, setTitle] = useState("");
-    const [selected, setSelected] = useState("All");
     const [wordAlert, setWordAlert] = useState(null);
 
-    // console.log("form toduları", todos)  
+    // const [selected, setSelected] = useState("All");
 
-
-    const disptach = useDispatch();
 
     // Api Axios Get
     // useEffect(() => {
@@ -76,11 +74,13 @@ function Homepage({ user, setUser }) {
     // }
 
     // SELECTED LIST FILTER
-    // let selectedTodos =
-    //     selected === "All" ? todos :
-    //         selected === "Active" ? todos.filter(x => x.isCompleted === false) :
-    //             todos.filter(x => x.isCompleted === true)
+    const filteredTodos =
+        activeFilter === "All" ? itemsRedux :
+            activeFilter === "Active" ? itemsRedux.filter(x => x.isCompleted === false) :
+                itemsRedux.filter(x => x.isCompleted === true)
 
+
+                // console.log("filterd itemsRedux",itemsRedux)
 
     // Reset User Button 
     const userDelete = () => {
@@ -154,10 +154,14 @@ function Homepage({ user, setUser }) {
                             wordAlert === "WordAlert" ? <WordAlert /> : null
                         }
 
-                        <Section todos={todos} setTodos={setTodos} 
-                        itemsRedux={itemsRedux}
+                        <Section 
+                        // todos={todos} setTodos={setTodos} 
+                        itemsRedux={itemsRedux} filteredTodos={filteredTodos}
                          />
-                        <Footer todos={todos} setSelected={setSelected} />
+                        <Footer 
+                        // todos={todos} 
+                        // activeFilter={activeFilter} 
+                        />
                     </div>
 
                 </div>

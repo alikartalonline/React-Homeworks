@@ -1,8 +1,19 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
+import { useDispatch } from 'react-redux';
+import { toggle, deleteTodos } from '../redux/todos/todosSlice';
 
-function Section({ todos, setTodos, itemsRedux }) {
+function Section({ todos, setTodos, itemsRedux, filteredTodos }) {
+
+    const disptach = useDispatch();
+
+    const handleDeleteTodos = (id) => {
+        if (window.confirm("Are you Sure?")){
+            disptach(deleteTodos(id));
+        }
+    }
+
 
     // DELETE DATA FROM API
     const deleteTodo = async (item) => {
@@ -14,14 +25,14 @@ function Section({ todos, setTodos, itemsRedux }) {
     };
 
     // UPDATE CHECKBOX AND COMPLETE TODO
-    const updateCompleteTodos = (title) => {
-        const index = todos.findIndex(item => item.title === title);
-        const todo = todos.find(item => item.title === title);
-        todo.isCompleted = !todo.isCompleted
-        const newTodos = [...todos];
-        newTodos[index] = todo;
-        setTodos(newTodos);
-    };
+    // const updateCompleteTodos = (title) => {
+    //     const index = todos.findIndex(item => item.title === title);
+    //     const todo = todos.find(item => item.title === title);
+    //     todo.isCompleted = !todo.isCompleted
+    //     const newTodos = [...todos];
+    //     newTodos[index] = todo;
+    //     setTodos(newTodos);
+    // };
 
     // useEffect(() => {
     //     setTimeout(() => {
@@ -45,7 +56,7 @@ function Section({ todos, setTodos, itemsRedux }) {
                         </div> :
 
                         // TODOS MAP START
-                        itemsRedux.map((todo, i) => (
+                        filteredTodos.map((todo, i) => (
                             <li key={i}
                                 className="col-md-8  me-md-auto     col-lg-6 mt-2"
                             >
@@ -56,7 +67,7 @@ function Section({ todos, setTodos, itemsRedux }) {
                                             className="toggle m-2 form-check-input"
                                             type="checkbox" value="" id="flexCheckDefault"
                                             checked={todo.isCompleted}
-                                            onChange={() => updateCompleteTodos(todo.title)}
+                                            onChange={() => disptach(toggle({id: todo.id}))}
                                         />
                                     </div>
 
@@ -70,7 +81,8 @@ function Section({ todos, setTodos, itemsRedux }) {
                                     <button
                                         className={todo.isCompleted === true ?
                                             "btn x-icon border border-0 text-danger" : "btn x-icon border border-0"}
-                                        onClick={() => deleteTodo(todo.id)}
+                                        // onClick={() => deleteTodo(todo.id)}
+                                        onClick={() => handleDeleteTodos(todo.id)}
                                     ></button>
                                 </div>
                             </li>
