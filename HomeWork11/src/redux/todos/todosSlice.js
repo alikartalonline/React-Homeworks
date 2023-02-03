@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 export const todosSlice = createSlice({
     name: "todos",
@@ -10,7 +10,7 @@ export const todosSlice = createSlice({
                 isCompleted: true,
             },
             {
-                id: "101",
+                id: "101", 
                 title: "Learn Redux",
                 isCompleted: false,
             }
@@ -18,8 +18,19 @@ export const todosSlice = createSlice({
         activeFilter: "All",
     },
     reducers: {
-        newTodo: (state, action) => {
-            state.itemsRedux.push(action.payload);
+        newTodo: {
+            reducer: (state, action) => {
+                state.itemsRedux.push(action.payload);
+            },
+            prepare: ({ title }) => { // "Homepage">> "disptach(newTodo({  title,  }));" ettikten sonra "title" payload olarak gönderilip "prepare: ({ title })" içine düşüyor ve aşağıdaki "payload" return ediliyor ve yukarıdaki "reducer: (state, action)" içindeki "action"a düşüyor ve biz de action altındaki payload'ı kullanarak state elemanı ekliyorum.
+                 return {
+                    payload: {
+                        id: nanoid(),
+                        isCompleted: false,
+                        title,
+                    }
+                }
+            }
         },
         toggle: (state, action) => {
             const { id } = action.payload;

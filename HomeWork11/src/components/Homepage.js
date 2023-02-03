@@ -1,12 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-
 
 import { useSelector, useDispatch } from 'react-redux';
 import { newTodo } from '../redux/todos/todosSlice';
-import { nanoid } from '@reduxjs/toolkit';
 import { selectFilteredTodos } from '../redux/todos/todosSlice';
 
 // COMPONENTS
@@ -52,7 +48,7 @@ function Homepage({ user, setUser }) {
 
         // addTodo(title) // title yani yazılan "todo" koşulu geçerse addTodo'ya gidecek.
 
-        disptach(newTodo({ id: nanoid(), title, isCompleted: false }));
+        disptach(newTodo({  title,  }));
         setTitle(""); // input boş kalması için
     }
 
