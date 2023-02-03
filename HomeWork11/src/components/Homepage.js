@@ -1,6 +1,4 @@
-import React, { useState,useEffect } from 'react';
-import axios from 'axios';
-
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { newTodo } from '../redux/todos/todosSlice';
 import { selectFilteredTodos } from '../redux/todos/todosSlice';
@@ -15,8 +13,10 @@ function Homepage({ user, setUser }) {
 
     const disptach = useDispatch();
     const filteredTodos = useSelector(selectFilteredTodos);
+    const isLoading = useSelector((state) => state.todos.isLoading);
+    const errorRedux = useSelector((state) => state.todos.error);
 
-    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
     const [wordAlert, setWordAlert] = useState(null);
 
 
@@ -32,12 +32,12 @@ function Homepage({ user, setUser }) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (title === "" || title.length <= 3) {
+        if (content === "" || content.length <= 3) {
             alert("Please do not leave the list blank!")
             return false; // sonrasında boş liste oluşturmaması için
         }
 
-        if (title.split(" ").find(x => x.length > 10)) {
+        if (content.split(" ").find(x => x.length > 10)) {
             // alert("Please enter a valid word or leave a space.")
             setWordAlert("WordAlert")
             setTimeout(() => {
@@ -46,10 +46,10 @@ function Homepage({ user, setUser }) {
             return false;
         }
 
-        // addTodo(title) // title yani yazılan "todo" koşulu geçerse addTodo'ya gidecek.
+        // addTodo(content) // content yani yazılan "todo" koşulu geçerse addTodo'ya gidecek.
 
-        disptach(newTodo({  title,  }));
-        setTitle(""); // input boş kalması için
+        disptach(newTodo({ content }));
+        setContent(""); // input boş kalması için
     }
 
     // ADD DATA TO API
@@ -64,6 +64,7 @@ function Homepage({ user, setUser }) {
         setUser("")
     }
 
+console.log("contentler :",filteredTodos)
 
     return (
         <div className='container'>
@@ -109,8 +110,8 @@ function Homepage({ user, setUser }) {
                                     className="form-control task-div col-10"
                                     placeholder="Things To Do"
                                     id="floatingInput"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    value={content}
+                                    onChange={(e) => setContent(e.target.value)}
                                     autoFocus
                                 >
                                 </input>
@@ -131,8 +132,8 @@ function Homepage({ user, setUser }) {
                             wordAlert === "WordAlert" ? <WordAlert /> : null
                         }
 
-                        <Section 
-                         filteredTodos={filteredTodos}  />
+                        <Section
+                            filteredTodos={filteredTodos} isLoading={isLoading} errorRedux={errorRedux} />
                         <Footer />
                     </div>
 

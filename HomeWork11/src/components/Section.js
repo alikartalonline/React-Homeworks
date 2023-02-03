@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
-
 import { useDispatch } from 'react-redux';
-import { toggle, deleteTodos } from '../redux/todos/todosSlice';
 
-function Section({ filteredTodos }) {
+import { toggle, deleteTodos, getTodosAsync } from '../redux/todos/todosSlice';
+function Section({ filteredTodos, isLoading, errorRedux }) {
 
     const disptach = useDispatch();
 
     const handleDeleteTodos = (id) => {
-        if (window.confirm("Are you Sure?")){
+        if (window.confirm("Are you Sure?")) {
             disptach(deleteTodos(id));
         }
-    }
+    };
 
+    useEffect(() => {
+        disptach(getTodosAsync());
+    }, [disptach]);
 
     // DELETE DATA FROM API
     // const deleteTodo = async (item) => {
@@ -32,6 +33,14 @@ function Section({ filteredTodos }) {
     //         }
     //     }, 30000)
     // }, [setTodos, todos]);
+
+    if (isLoading) {
+        return <div>Loading . . . </div>
+    };
+
+    // if (errorRedux) {
+    //     return <ErrorRedux message={errorRedux} />
+    // };
 
 
     return (
@@ -58,7 +67,7 @@ function Section({ filteredTodos }) {
                                             className="toggle m-2 form-check-input"
                                             type="checkbox" value="" id="flexCheckDefault"
                                             checked={todo.isCompleted}
-                                            onChange={() => disptach(toggle({id: todo.id}))}
+                                            onChange={() => disptach(toggle({ id: todo.id }))}
                                         />
                                     </div>
 
@@ -66,7 +75,7 @@ function Section({ filteredTodos }) {
                                         className={todo.isCompleted === true ?
                                             "text-decoration-line-through text-primary" : "text-dark"}
                                     >
-                                        {todo.title}
+                                        {todo.content}
                                     </label>
 
                                     <button
