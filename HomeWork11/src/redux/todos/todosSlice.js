@@ -2,14 +2,23 @@ import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const getTodosAsync = createAsyncThunk('todos/getTodosAsync', async () => {
-    const res = await axios('https://630f37fc37925634188a39d5.mockapi.io/todos');
+    const res = await axios(`${process.env.REACT_APP_MOCKAPI_IO}/todos`);
     return res.data;
 
     // Alternative Fetch()
-    //     const res = await fetch('https://630f37fc37925634188a39d5.mockapi.io/todos');
+    //     const res = await fetch(`${process.env.REACT_APP_MOCKAPI_IO}/todos`);
     //     return await res.json();
 });
 
+export const addTodosAsync = createAsyncThunk('todos/addTodosAsync', async (data) => { // data => new todo
+    const res = await axios.post(`${process.env.REACT_APP_MOCKAPI_IO}/todos`, data);
+    return res.data;
+});
+
+export const toggleTodoAsync = createAsyncThunk('todos/toggleTodoAsync', async ({ id, data }) => { // data => güncellenmek istenen todo'nun id'si (true/false)
+    const res = await axios.patch(`${process.env.REACT_APP_MOCKAPI_IO}/todos/${id}`, data);
+    return res.data;
+})
 
 export const todosSlice = createSlice({
     name: "todos",
@@ -28,9 +37,13 @@ export const todosSlice = createSlice({
         ],
         isLoading: false,
         error: null,
+        addNewTodoLoading: false,
+        addNewTodoError: null,
         activeFilter: "All",
     },
     reducers: {
+
+        // ***** verileri Api'den çekip, Api'ye post olarak ekleyeceğim için burası (newTodo) artık gerekmiyor. *****
         newTodo: {
             reducer: (state, action) => {
                 state.itemsRedux.push(action.payload)
@@ -45,12 +58,15 @@ export const todosSlice = createSlice({
                 }
             }
         },
-        toggle: (state, action) => {
-            const { id } = action.payload;
+        // ***** verileri Api'den çekip, Api'ye post olarak ekleyeceğim için burası (newTodo) artık gerekmiyor. *****
 
-            const item = state.itemsRedux.find(item => item.id === id); // find id
-            item.isCompleted = !item.isCompleted; // id === true ? false : true
-        },
+        // axios.patch() sonrasında buraya (toggle) ihtiyacımız yok.
+        // toggle: (state, action) => { 
+        //     const { id } = action.payload;
+
+        //     const item = state.itemsRedux.find(item => item.id === id); // find id
+        //     item.isCompleted = !item.isCompleted; // id === true ? false : true
+        // },
         deleteTodos: (state, action) => {
             const id = action.payload;
 
@@ -67,6 +83,8 @@ export const todosSlice = createSlice({
     },
     extraReducers(builder) {
         builder
+
+            // get todos
             .addCase(getTodosAsync.pending, (state) => {
                 state.isLoading = true; // pending yani bekleme durumunda isLoading = true olacak!
             })
@@ -79,7 +97,27 @@ export const todosSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload.message;
             })
-    }
+
+            // add todo
+            .addCase(addTodosAsync.pending, (state) => {
+                state.addNewTodoLoading = true;
+            })
+            .addCase(addTodosAsync.fulfilled, (state, action) => {
+                state.itemsRedux.push(action.payload);
+                state.addNewTodoLoading = false;
+            })
+            .addCase(addTodosAsync.rejected, (state, action) => {
+                state.addNewTodoLoading = false;
+                state.addNewTodoError = action.payload.message;
+            })
+
+            // toggle todo
+            .addCase(toggleTodoAsync.fulfilled, (state, action) => {
+                const { id, isCompleted } = action.payload; // section.js > await disptach(toggleTodoAsync({ id, data: { isCompleted } })); Buradaki veriler.
+                const index = state.itemsRedux.findIndex(item => item.id === id); // Yukarıdaki seçtiğimiz id'li elemanın state.itemsRedux içinde hangi index'te olduğunu bulmam gerekiyor.
+                state.itemsRedux[index].isCompleted = isCompleted; // Seçilen index numaralı elemanın "isCompleted" türünü toggleTodoAsync ile belirlediğim "isCompleted" türü ile değiştir.
+            })
+    },
 });
 
 export const selectTodos = (state) => state.todos.itemsRedux;
@@ -98,7 +136,9 @@ export const {
     toggle,
     deleteTodos,
     changeActiveFilter,
-    clearCompleted
+    clearCompleted,
+    addNewTodoLoading,
+    addNewTodoError,
 } = todosSlice.actions;
 
 export default todosSlice.reducer;

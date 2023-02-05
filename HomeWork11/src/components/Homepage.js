@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { newTodo } from '../redux/todos/todosSlice';
+import { newTodo, addTodosAsync } from '../redux/todos/todosSlice';
 import { selectFilteredTodos } from '../redux/todos/todosSlice';
 
 // COMPONENTS
@@ -13,23 +13,18 @@ function Homepage({ user, setUser }) {
 
     const disptach = useDispatch();
     const filteredTodos = useSelector(selectFilteredTodos);
+
     const isLoading = useSelector((state) => state.todos.isLoading);
     const errorRedux = useSelector((state) => state.todos.error);
+    const addNewTodoLoading = useSelector((state) => state.todos.addNewTodoLoading);
+    const addNewTodoError = useSelector((state) => state.todos.addNewTodoError);
 
     const [content, setContent] = useState("");
     const [wordAlert, setWordAlert] = useState(null);
 
 
-    // Api Axios Get
-    // useEffect(() => {
-    //     axios.get("https://630f37fc37925634188a39d5.mockapi.io/todos")
-    //         .then(res => setTodos(todos.concat(res.data)))
-    //         .catch(err => console.log(err))
-    // }, []);
-
-
     // FORM
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (content === "" || content.length <= 3) {
@@ -46,25 +41,19 @@ function Homepage({ user, setUser }) {
             return false;
         }
 
-        // addTodo(content) // content yani yazılan "todo" koşulu geçerse addTodo'ya gidecek.
-
-        disptach(newTodo({ content }));
+        // disptach(newTodo({ content })); // verileri APi'den çekeceğim için burası artık gereksiz
+        await disptach(addTodosAsync({ content })); // asenkron (async) bir işlem olduğu için bunu bekletmemiz lazım, o yüzden "await" ekledik
         setContent(""); // input boş kalması için
     }
-
-    // ADD DATA TO API
-    // const addTodo = async (item) => {
-    //     await axios.post(`https://630f37fc37925634188a39d5.mockapi.io/todos`, item)
-    //     setTodos(todos.concat([item]))
-    // }
-
 
     // Reset User Button 
     const userDelete = () => {
         setUser("")
     }
 
-console.log("contentler :",filteredTodos)
+
+
+    console.log("contentler :", filteredTodos)
 
     return (
         <div className='container'>
@@ -107,14 +96,14 @@ console.log("contentler :",filteredTodos)
                         <form className='row' onSubmit={handleSubmit}>
                             <div className='form-floating col-10' >
                                 <input
+                                    disabled={addNewTodoLoading} // listeye yeni todo eklenmeden önce inputu disabled yapar
                                     className="form-control task-div col-10"
                                     placeholder="Things To Do"
                                     id="floatingInput"
                                     value={content}
                                     onChange={(e) => setContent(e.target.value)}
                                     autoFocus
-                                >
-                                </input>
+                                />
                                 <label htmlFor="floatingInput" className='text-primary'>Things To Do</label>
                             </div>
 
@@ -125,6 +114,16 @@ console.log("contentler :",filteredTodos)
                                     className='btn btn-primary rounded-circle add'>
                                     ADD
                                 </button>
+
+                                {
+                                    addNewTodoLoading && <span>Loading...</span>
+                                }
+
+                                {/* 
+                                {
+                                    addNewTodoError && <Error message={addNewTodoError} />
+                                } */}
+
                             </div>
                         </form>
 

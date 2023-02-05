@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { toggle, deleteTodos, getTodosAsync } from '../redux/todos/todosSlice';
+import { toggle, deleteTodos, getTodosAsync, toggleTodoAsync } from '../redux/todos/todosSlice';
 function Section({ filteredTodos, isLoading, errorRedux }) {
 
     const disptach = useDispatch();
@@ -43,6 +43,11 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
     // };
 
 
+    const handleToggle = async (id, isCompleted) => {
+        await disptach(toggleTodoAsync({ id, data: { isCompleted } }));
+    }
+
+
     return (
         <div className='container'>
             <ul className='row mt-5'>
@@ -67,7 +72,8 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
                                             className="toggle m-2 form-check-input"
                                             type="checkbox" value="" id="flexCheckDefault"
                                             checked={todo.isCompleted}
-                                            onChange={() => disptach(toggle({ id: todo.id }))}
+                                            // onChange={() => disptach(toggle({ id: todo.id }))}
+                                            onChange={() => handleToggle(todo.id, !todo.isCompleted)}
                                         />
                                     </div>
 
