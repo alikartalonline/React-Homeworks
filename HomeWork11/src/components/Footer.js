@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeActiveFilter, clearCompleted } from '../redux/todos/todosSlice';
 
 function Footer() {
 
   const disptach = useDispatch();
+  const activeFilter = useSelector(state => state.todos.activeFilter ); 
+
+  useEffect(() => {
+    localStorage.setItem("activeFilter", activeFilter);
+  }, [activeFilter]);
 
   return (
     <footer style={{ marginTop: "20%" }} className="sticky-bottom">

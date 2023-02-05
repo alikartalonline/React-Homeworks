@@ -1,29 +1,6 @@
-import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-export const getTodosAsync = createAsyncThunk('todos/getTodosAsync', async () => {
-    const res = await axios(`${process.env.REACT_APP_MOCKAPI_IO}/todos`);
-    return res.data;
-
-    // Alternative Fetch()
-    //     const res = await fetch(`${process.env.REACT_APP_MOCKAPI_IO}/todos`);
-    //     return await res.json();
-});
-
-export const addTodosAsync = createAsyncThunk('todos/addTodosAsync', async (data) => { // data => new todo
-    const res = await axios.post(`${process.env.REACT_APP_MOCKAPI_IO}/todos`, data);
-    return res.data;
-});
-
-export const toggleTodoAsync = createAsyncThunk('todos/toggleTodoAsync', async ({ id, data }) => { // data => güncellenmek istenen todo'nun id'si (true/false)
-    const res = await axios.patch(`${process.env.REACT_APP_MOCKAPI_IO}/todos/${id}`, data);
-    return res.data;
-});
-
-export const deleteTodoAsync = createAsyncThunk('todos/deleteTodoAsync', async (id) => {
-    await axios.delete(`${process.env.REACT_APP_MOCKAPI_IO}/todos/${id}`);
-    return id;
-});
+import { getTodosAsync, addTodosAsync, toggleTodoAsync, deleteTodoAsync} from './services';
 
 export const todosSlice = createSlice({
     name: "todos",
@@ -42,7 +19,8 @@ export const todosSlice = createSlice({
         ],
         isLoading: false,
         error: null,
-        activeFilter: "All",
+        // activeFilter: "All",
+        activeFilter: localStorage.getItem("activeFilter"), // Sayfa "All" - "Active" - "Completed" seçeneklerinin hangisiyle kapatıldıysa, tekrar açıldığında ana ekran o seçenekle açılıyor.
         addNewTodo: {
             isLoading: false,
             error: null,
@@ -55,7 +33,11 @@ export const todosSlice = createSlice({
             reducer: (state, action) => {
                 state.itemsRedux.push(action.payload)
             },
-            prepare: ({ content }) => { // "Homepage">> "disptach(newTodo({  content,  }));" ettikten sonra "content" payload olarak gönderilip "prepare: ({ content })" içine düşüyor ve aşağıdaki "payload" return ediliyor ve yukarıdaki "reducer: (state, action)" içindeki "action"a düşüyor ve biz de action altındaki payload'ı kullanarak state elemanı ekliyorum.
+            prepare: ({ content }) => { 
+            // "Homepage">> "disptach(newTodo({  content,  }));" ettikten sonra "content" payload olarak gönderilip,
+            // "prepare: ({ content })" içine düşüyor ve aşağıdaki "payload" return ediliyor, 
+            // ve yukarıdaki "reducer: (state, action)" içindeki "action"a düşüyor, 
+            // ve biz de action altındaki payload'ı kullanarak state elemanı ekliyorum.
                 return {
                     payload: {
                         id: nanoid(),

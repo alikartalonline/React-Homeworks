@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { toggle, deleteTodos, deleteTodoAsync, getTodosAsync, toggleTodoAsync } from '../redux/todos/todosSlice';
+import { toggle, deleteTodos, deleteTodoAsync, getTodosAsync, toggleTodoAsync } from '../redux/todos/services';
 function Section({ filteredTodos, isLoading, errorRedux }) {
 
     const disptach = useDispatch();

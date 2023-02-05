@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { newTodo, addTodosAsync } from '../redux/todos/todosSlice';
+import { newTodo, addTodosAsync } from '../redux/todos/services';
 import { selectFilteredTodos } from '../redux/todos/todosSlice';
 
 // COMPONENTS
@@ -53,7 +53,7 @@ function Homepage({ user, setUser }) {
 
 
 
-    console.log("contentler :", filteredTodos)
+    // console.log("contentler :", filteredTodos)
 
     return (
         <div className='container'>
