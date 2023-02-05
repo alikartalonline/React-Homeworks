@@ -16,8 +16,8 @@ function Homepage({ user, setUser }) {
 
     const isLoading = useSelector((state) => state.todos.isLoading);
     const errorRedux = useSelector((state) => state.todos.error);
-    const addNewTodoLoading = useSelector((state) => state.todos.addNewTodoLoading);
-    const addNewTodoError = useSelector((state) => state.todos.addNewTodoError);
+    const addNewTodoLoading = useSelector((state) => state.todos.addNewTodo.isLoading);
+    const addNewTodoError = useSelector((state) => state.todos.addNewTodo.error);
 
     const [content, setContent] = useState("");
     const [wordAlert, setWordAlert] = useState(null);

@@ -18,7 +18,12 @@ export const addTodosAsync = createAsyncThunk('todos/addTodosAsync', async (data
 export const toggleTodoAsync = createAsyncThunk('todos/toggleTodoAsync', async ({ id, data }) => { // data => güncellenmek istenen todo'nun id'si (true/false)
     const res = await axios.patch(`${process.env.REACT_APP_MOCKAPI_IO}/todos/${id}`, data);
     return res.data;
-})
+});
+
+export const deleteTodoAsync = createAsyncThunk('todos/deleteTodoAsync', async (id) => {
+    await axios.delete(`${process.env.REACT_APP_MOCKAPI_IO}/todos/${id}`);
+    return id;
+});
 
 export const todosSlice = createSlice({
     name: "todos",
@@ -37,9 +42,11 @@ export const todosSlice = createSlice({
         ],
         isLoading: false,
         error: null,
-        addNewTodoLoading: false,
-        addNewTodoError: null,
         activeFilter: "All",
+        addNewTodo: {
+            isLoading: false,
+            error: null,
+        }
     },
     reducers: {
 
@@ -60,19 +67,20 @@ export const todosSlice = createSlice({
         },
         // ***** verileri Api'den çekip, Api'ye post olarak ekleyeceğim için burası (newTodo) artık gerekmiyor. *****
 
-        // axios.patch() sonrasında buraya (toggle) ihtiyacımız yok.
-        // toggle: (state, action) => { 
+        // toggle: (state, action) => {     // axios.patch() sonrasında buraya (toggle) ihtiyacımız yok.
         //     const { id } = action.payload;
 
         //     const item = state.itemsRedux.find(item => item.id === id); // find id
         //     item.isCompleted = !item.isCompleted; // id === true ? false : true
         // },
-        deleteTodos: (state, action) => {
-            const id = action.payload;
 
-            const filtered = state.itemsRedux.filter((item) => item.id !== id);
-            state.itemsRedux = filtered;
-        },
+        // deleteTodos: (state, action) => {    // deleteTodoAsync() ile APi'den sildiğimiz için artık buraya ihtiyacımız yok
+        //     const id = action.payload;
+
+        //     const filtered = state.itemsRedux.filter((item) => item.id !== id);
+        //     state.itemsRedux = filtered;
+        // },
+
         changeActiveFilter: (state, action) => {
             state.activeFilter = action.payload;
         },
@@ -100,15 +108,15 @@ export const todosSlice = createSlice({
 
             // add todo
             .addCase(addTodosAsync.pending, (state) => {
-                state.addNewTodoLoading = true;
+                state.addNewTodo.isLoading = true;
             })
             .addCase(addTodosAsync.fulfilled, (state, action) => {
                 state.itemsRedux.push(action.payload);
-                state.addNewTodoLoading = false;
+                state.addNewTodo.isLoading = false;
             })
             .addCase(addTodosAsync.rejected, (state, action) => {
-                state.addNewTodoLoading = false;
-                state.addNewTodoError = action.payload.message;
+                state.addNewTodo.isLoading = false;
+                state.addNewTodo.error = action.payload.message;
             })
 
             // toggle todo
@@ -116,6 +124,13 @@ export const todosSlice = createSlice({
                 const { id, isCompleted } = action.payload; // section.js > await disptach(toggleTodoAsync({ id, data: { isCompleted } })); Buradaki veriler.
                 const index = state.itemsRedux.findIndex(item => item.id === id); // Yukarıdaki seçtiğimiz id'li elemanın state.itemsRedux içinde hangi index'te olduğunu bulmam gerekiyor.
                 state.itemsRedux[index].isCompleted = isCompleted; // Seçilen index numaralı elemanın "isCompleted" türünü toggleTodoAsync ile belirlediğim "isCompleted" türü ile değiştir.
+            })
+
+            // delete todo 
+            .addCase(deleteTodoAsync.fulfilled, (state, action) => {
+                const id = action.payload;
+                const filtered = state.itemsRedux.filter(item => item.id !== id);
+                state.itemsRedux = filtered;
             })
     },
 });

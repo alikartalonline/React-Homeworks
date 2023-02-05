@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { toggle, deleteTodos, getTodosAsync, toggleTodoAsync } from '../redux/todos/todosSlice';
+import { toggle, deleteTodos, deleteTodoAsync, getTodosAsync, toggleTodoAsync } from '../redux/todos/todosSlice';
 function Section({ filteredTodos, isLoading, errorRedux }) {
 
     const disptach = useDispatch();
 
-    const handleDeleteTodos = (id) => {
+    // const handleDeleteTodos = (id) => {
+    //     if (window.confirm("Are you Sure?")) {
+    //         disptach(deleteTodoAsync(id));
+    //     }
+    // };
+
+    const handleDeleteTodos = async (id) => {
         if (window.confirm("Are you Sure?")) {
-            disptach(deleteTodos(id));
+            await disptach(deleteTodoAsync(id));
         }
     };
+
 
     useEffect(() => {
         disptach(getTodosAsync());
