@@ -10,17 +10,18 @@ import {
 export const todosSlice = createSlice({
     name: "todos",
     initialState: {
-        itemsRedux: [
-            // {
-            //     id: "100",
-            //     content: "Learn React",
-            //     isCompleted: true,
-            // },
-            // {
-            //     id: "101",
-            //     content: "Learn Redux",
-            //     isCompleted: false,
-            // }
+        itemsRedux: [],
+        itemsLocked: [
+            {
+                id: "100",
+                content: "Learn React",
+                isCompleted: true,
+            },
+            {
+                id: "101",
+                content: "Learn Redux",
+                isCompleted: false,
+            }
         ],
         isLoading: false,
         error: null,
@@ -83,7 +84,7 @@ export const todosSlice = createSlice({
                 state.isLoading = true; // pending yani bekleme durumunda isLoading = true olacak!
             })
             .addCase(getTodosAsync.fulfilled, (state, action) => {
-                state.itemsRedux = action.payload;
+                state.itemsRedux = action.payload
                 state.isLoading = false;
             })
             .addCase(getTodosAsync.rejected, (state, action) => {
@@ -125,9 +126,11 @@ export const todosSlice = createSlice({
 
     },
 });
-
-export const selectTodos = (state) => state.todos.itemsRedux;
+ 
+export const selectTodos = (state) => state.todos.itemsRedux; 
 // Component içinde uzun uzun  yazmak yerine "selecTodos" olarak import edip, useSelector(selectTodos) ile kullanabilirim.
+
+export const itemsLocked = (state) => state.todos.itemsLocked; 
 
 export const selectFilteredTodos = (state) => {
     if (state.todos.activeFilter === "All") {

@@ -51,7 +51,8 @@ function PersonelToDo() {
                                     >
                                         <div className='form-floating col-10' >
                                             <input
-                                                className="form-control task-div col-10"
+                                            style={{ backgroundColor: "transparent" }}
+                                                className="form-control task-div col-10 fs-5 mt-2 fw-bold"
                                                 placeholder="Choose Your Username"
                                                 id="floatingInput"
                                                 name='user'

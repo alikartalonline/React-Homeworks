@@ -22,7 +22,14 @@ function Footer({ filteredTodos }) {
     }
   };
 
-
+  // Delete everything after "30 SECONDS"!
+  useEffect(() => {
+    setTimeout(() => {
+      filteredTodos.filter(async (item) => {
+        await dispatch(deleteTodoAsync(item.id));
+      });
+    }, 30000)
+  }, [filteredTodos]);
 
   return (
     <footer style={{ marginTop: "20%" }} className="sticky-bottom">

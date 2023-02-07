@@ -3,7 +3,7 @@ import React from 'react';
 function WordAlert() {
     return (
         <div className='wordalert'>
-            <div className="alert alert-primary d-flex align-items-center  m-3 p-3 " role="alert">
+            <div className="alert alert-primary d-flex align-items-center  m-3 p-3" role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2 "
                     height="30" viewBox="0 0 16 16" role="img"
@@ -13,8 +13,8 @@ function WordAlert() {
 
 
                 {/* ALERT - 1 START: */}
-                <div className='d-block op'>
-                    <h6>Please enter a valid word or <span className='text-danger'>"leave a space."</span></h6>
+                <div className='d-block'>
+                    <h6>Please enter a valid word or <br/><span className='text-danger'>"leave a space."</span></h6>
                     <h6><span className="badge bg-secondary">The word cannot exceed 10 characters.</span></h6>
                 </div>
                 {/* ALERT - 1 FINISH: */}

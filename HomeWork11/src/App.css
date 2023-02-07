@@ -75,22 +75,18 @@ body {
 .task-div {
   border-color: transparent;
   border-bottom-color: red;
-  background-color: transparent;
   color: white;
 }
 
 .task-div:hover {
-  background-color: transparent;
   color: yellow;
 }
 
 .task-div:active {
-  background-color: transparent;
   color: white;
 }
 
 .task-div:focus {
-  background-color: transparent;
   color: white;
 }
 
@@ -137,19 +133,15 @@ footer {
   padding: 10px 15px;
   text-align: center;
   border-top: 1px solid #e6e6e6;
-  /* padding-top: 30%; */
 }
 
-/* footer .btn1:hover{
-  border-radius: 50%;
-} */
-
-.xbx:hover{
+.xbx:hover {
   border-color: white;
   border-radius: 50%;
 }
 
-footer .btn2, .btn3 {
+footer .btn2,
+.btn3 {
   color: #ffff;
 }
 
@@ -160,16 +152,16 @@ footer .btn2:hover {
 
 footer .btn3:hover {
   color: rgb(45, 45, 247);
-    cursor: progress ;
+  cursor: progress;
 }
 
-footer .btn-sm:hover{
+footer .btn-sm:hover {
   color: rgb(255, 247, 10);
   border-color: yellow;
   cursor: grab;
 }
 
-footer .btn-sm:active{
+footer .btn-sm:active {
   color: rgb(255, 247, 10);
   border-color: yellow;
   cursor: grabbing;
@@ -178,11 +170,16 @@ footer .btn-sm:active{
 .wordalert {
   height: 10px;
   white-space: nowrap;
-  width: 70%;
-  opacity: 0.85;
+  width: 60%;
+  opacity: 0.75;
 }
 
-.spinner-border{
+.wordalert div{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spinner-border {
   --bs-spinner-animation-speed: 1.5s;
 }
 

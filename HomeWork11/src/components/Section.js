@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // COMPONENTS
 import Loading from './Loading';
 import ErrorRedux from './ErrorRedux';
 import EmptyTodoList from './EmptyTodoList';
+import { itemsLocked } from '../redux/todos/todosSlice';
 
 import {
     // toggle, 
@@ -18,6 +19,8 @@ import {
 function Section({ filteredTodos, isLoading, errorRedux }) {
 
     const dispatch = useDispatch();
+    const activeFilter = useSelector(state => state.todos.activeFilter);
+    const itemsLockedRedux = useSelector(itemsLocked);
 
     const handleDeleteTodos = async (id) => {
         if (window.confirm("Are you Sure?")) {
@@ -30,14 +33,6 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
     }, [dispatch]);
 
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         for (let i = 0; i <= 15; i++) {
-    //             axios.delete(`https://630f37fc37925634188a39d5.mockapi.io/todos/${i}`)
-    //         }
-    //     }, 30000)
-    // }, [setTodos, todos]);
-
     if (isLoading) {
         return <div><Loading /></div>
     };
@@ -46,7 +41,7 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
         return <ErrorRedux message={errorRedux} />
     };
 
-    if(filteredTodos == ""){
+    if (filteredTodos == "") {
         return <EmptyTodoList />
     }
 
@@ -60,6 +55,44 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
         <div className='container'>
             <ul className='row mt-5'>
 
+                {/* // REDUX LOCKED TODOS MAP START */}
+                {
+                    activeFilter === "All" ?
+                        itemsLockedRedux.map((item, i) => (
+                            <li key={i}
+                                className="col-md-8  me-md-auto col-lg-6 mt-2"
+                            >
+                                <div className='d-flex '>
+
+                                    <div className='form-check'>
+                                        <input
+                                            className="toggle m-2 form-check-input"
+                                            type="checkbox" value="" id="flexCheckDefault"
+                                            checked={item.isCompleted}
+                                            onChange={() => alert("You can't change this list!")}
+                                        />
+                                    </div>
+
+                                    <label
+                                        className={item.isCompleted === true ?
+                                            "text-decoration-line-through text-primary" : "text-dark"}
+                                    >
+                                        {item.content}
+                                    </label>
+
+                                    <button
+                                        className={item.isCompleted === true ?
+                                            "btn x-icon border border-0 text-danger" : "btn x-icon border border-0"}
+                                        onClick={() => alert("You can't change this list!")}
+                                    ></button>
+                                </div>
+                            </li>
+                        ))
+                        : null
+                }
+                {/* // REDUX LOCKED TODOS MAP FINISH */}
+
+
                 {
                     // LOADING SPINNER BOOTSTRAP
                     filteredTodos === "" ?
@@ -68,10 +101,10 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
                             <span className="visually-hidden">Loading...</span>
                         </div> :
 
-                        // TODOS MAP START
+                        // API TODOS MAP START
                         filteredTodos.map((todo, i) => (
                             <li key={i}
-                                className="col-md-8  me-md-auto     col-lg-6 mt-2"
+                                className="col-md-8  me-md-auto col-lg-6 mt-2"
                             >
                                 <div className='d-flex '>
 

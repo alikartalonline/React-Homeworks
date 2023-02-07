@@ -22,8 +22,6 @@ function Homepage({ user, setUser }) {
     const addNewTodoLoading = useSelector((state) => state.todos.addNewTodo.isLoading);
     const addNewTodoError = useSelector((state) => state.todos.addNewTodo.error);
 
-    // console.log("addNewTodoError", addNewTodoError)
-
     const [content, setContent] = useState("");
     const [wordAlert, setWordAlert] = useState(null);
 
@@ -53,13 +51,8 @@ function Homepage({ user, setUser }) {
 
     // Reset User Button 
     const userDelete = () => {
-        setUser("")
+        setUser("");
     }
-
-    // if (addNewTodoError) {
-    //     return <ErrorRedux message={addNewTodoError} />
-    // };
-
 
     return (
         <div className='container'>
@@ -102,7 +95,8 @@ function Homepage({ user, setUser }) {
                         <form className='row' onSubmit={handleSubmit}>
                             <div className='form-floating col-10' >
                                 <input
-                                    disabled={addNewTodoLoading} // listeye yeni todo eklenmeden önce inputu disabled yapar
+                                    style={{ backgroundColor: "transparent" }}
+                                    disabled={addNewTodoLoading} // listeye yeni todo eklenmesi başarılı bir şekilde tamamlanırken inputu disabled yapar
                                     className="form-control task-div col-10"
                                     placeholder="Things To Do"
                                     id="floatingInput"
@@ -139,7 +133,7 @@ function Homepage({ user, setUser }) {
                                 />
                         }
 
-                        <Footer   filteredTodos={filteredTodos} />
+                        <Footer filteredTodos={filteredTodos} />
 
                     </div>
                 </div>
