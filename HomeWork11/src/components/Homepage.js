@@ -3,21 +3,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import { newTodo, addTodosAsync } from '../redux/todos/services';
 import { selectFilteredTodos } from '../redux/todos/todosSlice';
 
+
 // COMPONENTS
 import Section from './Section';
 import Footer from './Footer';
 import WordAlert from './WordAlert';
+import ErrorRedux from './ErrorRedux';
+import NewTodoLoading from './NewTodoLoading';
 
 
 function Homepage({ user, setUser }) {
 
-    const disptach = useDispatch();
+    const dispatch = useDispatch();
     const filteredTodos = useSelector(selectFilteredTodos);
 
     const isLoading = useSelector((state) => state.todos.isLoading);
     const errorRedux = useSelector((state) => state.todos.error);
     const addNewTodoLoading = useSelector((state) => state.todos.addNewTodo.isLoading);
     const addNewTodoError = useSelector((state) => state.todos.addNewTodo.error);
+
+    // console.log("addNewTodoError", addNewTodoError)
 
     const [content, setContent] = useState("");
     const [wordAlert, setWordAlert] = useState(null);
@@ -41,8 +46,8 @@ function Homepage({ user, setUser }) {
             return false;
         }
 
-        // disptach(newTodo({ content })); // verileri APi'den çekeceğim için burası artık gereksiz
-        await disptach(addTodosAsync({ content })); // asenkron (async) bir işlem olduğu için bunu bekletmemiz lazım, o yüzden "await" ekledik
+        // dispatch(newTodo({ content })); // verileri APi'den çekeceğim için burası artık gereksiz
+        await dispatch(addTodosAsync({ content })); // asenkron (async) bir işlem olduğu için bunu bekletmemiz lazım, o yüzden "await" ekledik
         setContent(""); // input boş kalması için
     }
 
@@ -51,9 +56,10 @@ function Homepage({ user, setUser }) {
         setUser("")
     }
 
+    // if (addNewTodoError) {
+    //     return <ErrorRedux message={addNewTodoError} />
+    // };
 
-
-    // console.log("contentler :", filteredTodos)
 
     return (
         <div className='container'>
@@ -108,21 +114,14 @@ function Homepage({ user, setUser }) {
                             </div>
 
                             <div className='col-2'>
-                                <button
-                                    type='submit'
-                                    value="submit"
-                                    className='btn btn-primary rounded-circle add'>
-                                    ADD
-                                </button>
-
                                 {
-                                    addNewTodoLoading && <span>Loading...</span>
+                                    addNewTodoLoading ? <NewTodoLoading /> : <button
+                                        type='submit'
+                                        value="submit"
+                                        className='btn btn-primary rounded-circle add'>
+                                        ADD
+                                    </button>
                                 }
-
-                                {/* 
-                                {
-                                    addNewTodoError && <Error message={addNewTodoError} />
-                                } */}
 
                             </div>
                         </form>
@@ -131,11 +130,18 @@ function Homepage({ user, setUser }) {
                             wordAlert === "WordAlert" ? <WordAlert /> : null
                         }
 
-                        <Section
-                            filteredTodos={filteredTodos} isLoading={isLoading} errorRedux={errorRedux} />
-                        <Footer />
-                    </div>
+                        {
+                            addNewTodoError ? <ErrorRedux message={addNewTodoError} /> :
+                                <Section
+                                    filteredTodos={filteredTodos}
+                                    isLoading={isLoading}
+                                    errorRedux={errorRedux}
+                                />
+                        }
 
+                        <Footer   filteredTodos={filteredTodos} />
+
+                    </div>
                 </div>
                 {/* TODO FORM CONTAINER FINISH */}
 

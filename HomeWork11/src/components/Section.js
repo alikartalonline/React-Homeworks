@@ -1,36 +1,33 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { toggle, deleteTodos, deleteTodoAsync, getTodosAsync, toggleTodoAsync } from '../redux/todos/services';
+// COMPONENTS
+import Loading from './Loading';
+import ErrorRedux from './ErrorRedux';
+import EmptyTodoList from './EmptyTodoList';
+
+import {
+    // toggle, 
+    // deleteTodos, 
+    deleteTodoAsync,
+    getTodosAsync,
+    toggleTodoAsync
+} from '../redux/todos/services';
+
+
 function Section({ filteredTodos, isLoading, errorRedux }) {
 
-    const disptach = useDispatch();
-
-    // const handleDeleteTodos = (id) => {
-    //     if (window.confirm("Are you Sure?")) {
-    //         disptach(deleteTodoAsync(id));
-    //     }
-    // };
+    const dispatch = useDispatch();
 
     const handleDeleteTodos = async (id) => {
         if (window.confirm("Are you Sure?")) {
-            await disptach(deleteTodoAsync(id));
+            await dispatch(deleteTodoAsync(id));
         }
     };
 
-
     useEffect(() => {
-        disptach(getTodosAsync());
-    }, [disptach]);
-
-    // DELETE DATA FROM API
-    // const deleteTodo = async (item) => {
-    //     axios.delete(`https://630f37fc37925634188a39d5.mockapi.io/todos/${item}`)
-    //     const newTodo = todos.filter(
-    //         x => x.id !== item
-    //     );
-    //     setTodos(newTodo)
-    // };
+        dispatch(getTodosAsync());
+    }, [dispatch]);
 
 
     // useEffect(() => {
@@ -42,16 +39,20 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
     // }, [setTodos, todos]);
 
     if (isLoading) {
-        return <div>Loading . . . </div>
+        return <div><Loading /></div>
     };
 
-    // if (errorRedux) {
-    //     return <ErrorRedux message={errorRedux} />
-    // };
+    if (errorRedux) {
+        return <ErrorRedux message={errorRedux} />
+    };
+
+    if(filteredTodos == ""){
+        return <EmptyTodoList />
+    }
 
 
     const handleToggle = async (id, isCompleted) => {
-        await disptach(toggleTodoAsync({ id, data: { isCompleted } }));
+        await dispatch(toggleTodoAsync({ id, data: { isCompleted } }));
     }
 
 
@@ -79,7 +80,7 @@ function Section({ filteredTodos, isLoading, errorRedux }) {
                                             className="toggle m-2 form-check-input"
                                             type="checkbox" value="" id="flexCheckDefault"
                                             checked={todo.isCompleted}
-                                            // onChange={() => disptach(toggle({ id: todo.id }))}
+                                            // onChange={() => dispatch(toggle({ id: todo.id }))}
                                             onChange={() => handleToggle(todo.id, !todo.isCompleted)}
                                         />
                                     </div>

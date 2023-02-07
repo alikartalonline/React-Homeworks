@@ -1,6 +1,11 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-import { getTodosAsync, addTodosAsync, toggleTodoAsync, deleteTodoAsync} from './services';
+import {
+    getTodosAsync,
+    addTodosAsync,
+    toggleTodoAsync,
+    deleteTodoAsync,
+} from './services';
 
 export const todosSlice = createSlice({
     name: "todos",
@@ -20,7 +25,7 @@ export const todosSlice = createSlice({
         isLoading: false,
         error: null,
         // activeFilter: "All",
-        activeFilter: localStorage.getItem("activeFilter"), // Sayfa "All" - "Active" - "Completed" seçeneklerinin hangisiyle kapatıldıysa, tekrar açıldığında ana ekran o seçenekle açılıyor.
+        activeFilter: (localStorage.getItem("activeFilter") || "All"), // Sayfa "All" - "Active" - "Completed" seçeneklerinin hangisiyle kapatıldıysa, tekrar açıldığında ana ekran o seçenekle açılıyor.
         addNewTodo: {
             isLoading: false,
             error: null,
@@ -33,11 +38,11 @@ export const todosSlice = createSlice({
             reducer: (state, action) => {
                 state.itemsRedux.push(action.payload)
             },
-            prepare: ({ content }) => { 
-            // "Homepage">> "disptach(newTodo({  content,  }));" ettikten sonra "content" payload olarak gönderilip,
-            // "prepare: ({ content })" içine düşüyor ve aşağıdaki "payload" return ediliyor, 
-            // ve yukarıdaki "reducer: (state, action)" içindeki "action"a düşüyor, 
-            // ve biz de action altındaki payload'ı kullanarak state elemanı ekliyorum.
+            prepare: ({ content }) => {
+                // "Homepage">> "disptach(newTodo({  content,  }));" ettikten sonra "content" payload olarak gönderilip,
+                // "prepare: ({ content })" içine düşüyor ve aşağıdaki "payload" return ediliyor, 
+                // ve yukarıdaki "reducer: (state, action)" içindeki "action"a düşüyor, 
+                // ve biz de action altındaki payload'ı kullanarak state elemanı ekliyorum.
                 return {
                     payload: {
                         id: nanoid(),
@@ -73,22 +78,20 @@ export const todosSlice = createSlice({
     },
     extraReducers(builder) {
         builder
-
-            // get todos
+            // Get todos
             .addCase(getTodosAsync.pending, (state) => {
                 state.isLoading = true; // pending yani bekleme durumunda isLoading = true olacak!
             })
             .addCase(getTodosAsync.fulfilled, (state, action) => {
                 state.itemsRedux = action.payload;
                 state.isLoading = false;
-                // state.itemsRedux = state.itemsRedux.concat(action.payload)
             })
             .addCase(getTodosAsync.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.payload.message;
+                state.error = action.error.message;
             })
 
-            // add todo
+            // Add todo
             .addCase(addTodosAsync.pending, (state) => {
                 state.addNewTodo.isLoading = true;
             })
@@ -98,26 +101,33 @@ export const todosSlice = createSlice({
             })
             .addCase(addTodosAsync.rejected, (state, action) => {
                 state.addNewTodo.isLoading = false;
-                state.addNewTodo.error = action.payload.message;
+                state.addNewTodo.error = action.error.message;
             })
 
-            // toggle todo
+            // Toggle todo
             .addCase(toggleTodoAsync.fulfilled, (state, action) => {
-                const { id, isCompleted } = action.payload; // section.js > await disptach(toggleTodoAsync({ id, data: { isCompleted } })); Buradaki veriler.
-                const index = state.itemsRedux.findIndex(item => item.id === id); // Yukarıdaki seçtiğimiz id'li elemanın state.itemsRedux içinde hangi index'te olduğunu bulmam gerekiyor.
-                state.itemsRedux[index].isCompleted = isCompleted; // Seçilen index numaralı elemanın "isCompleted" türünü toggleTodoAsync ile belirlediğim "isCompleted" türü ile değiştir.
+                const { id, isCompleted } = action.payload;
+                // Buradaki veriler: section.js > await disptach(toggleTodoAsync({ id, data: { isCompleted } })); 
+
+                const index = state.itemsRedux.findIndex(item => item.id === id);
+                // Yukarıdaki seçtiğimiz id'li elemanın state.itemsRedux içinde hangi index'te olduğunu bulmam gerekiyor.
+
+                state.itemsRedux[index].isCompleted = isCompleted;
+                // Seçilen index numaralı elemanın "isCompleted" türünü toggleTodoAsync ile belirlediğim "isCompleted" türü ile değiştir.
             })
 
-            // delete todo 
+            // Delete todo 
             .addCase(deleteTodoAsync.fulfilled, (state, action) => {
                 const id = action.payload;
                 const filtered = state.itemsRedux.filter(item => item.id !== id);
                 state.itemsRedux = filtered;
             })
+
     },
 });
 
 export const selectTodos = (state) => state.todos.itemsRedux;
+// Component içinde uzun uzun  yazmak yerine "selecTodos" olarak import edip, useSelector(selectTodos) ile kullanabilirim.
 
 export const selectFilteredTodos = (state) => {
     if (state.todos.activeFilter === "All") {

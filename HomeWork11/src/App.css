@@ -181,3 +181,11 @@ footer .btn-sm:active{
   width: 70%;
   opacity: 0.85;
 }
+
+.spinner-border{
+  --bs-spinner-animation-speed: 1.5s;
+}
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
