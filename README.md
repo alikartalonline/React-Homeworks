@@ -93,5 +93,17 @@ You can access my React assignments from the links below.
 
 ![ToDoListRedux](https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork10/assets/reduxtodolist.png)
 
+<br>
+<hr>
+  
+#### HomeWork 11: ["Personal Todo App - REDUX"](https://github.com/alikartalonline/React-Homeworks/tree/main/HomeWork10)
+
+<br>
+
+#### [Click to View](https://alikartalonline-reduxtodo.netlify.app/)
+
+<br>
+
+<img src="https://github.com/alikartalonline/React-Homeworks/blob/main/HomeWork11/public/gif/reduxtodo.gif" width="800" height="400" alt="todoAppRedux" title="todoAppRedux">
 
 
